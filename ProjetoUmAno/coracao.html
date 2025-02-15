@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempo Juntos</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            background-color: #444;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: blueviolet;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .texto {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #ddd;
+            margin-bottom: 40px;
+        }
+
+        .contador {
+            font-size: 28px;
+            font-weight: bold;
+            color: blueviolet;
+            background-color: #333;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .contador span {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        .back-button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: blueviolet;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: darkviolet;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Nosso Tempo Juntos</h1>
+        <div class="texto">
+            <p>
+                Eu te amo muito Isabelli Fumagalli Silva, muito obrigado por estar comigo durante esse 1 ano, você é muito muito muito especial pra mim, sinto que fomos feitos um para o outro, 
+            </p>
+            <p>
+                O tempo é precioso, e cada segundo ao seu lado é um presente. Este contador marca o tempo que estamos juntos, e espero que ele continue aumentando até o infinito.
+            </p>
+        </div>
+        <div class="contador">
+            <span id="tempo">Carregando...</span>
+        </div>
+    </div>
+
+    <button class="back-button" onclick="window.location.href='index.html'">Voltar para a Página Inicial</button>
+
+    <script>
+        const dataInicio = new Date("2024-02-15T23:59:59"); // Formato: YYYY-MM-DDTHH:MM:SS
+
+        function atualizarContador() {
+            const agora = new Date();
+            const diferenca = agora - dataInicio;
+
+            // Calcula dias, horas, minutos e segundos
+            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+            // Verifica se já completou 1 ano
+            if (dias >= 365) {
+                const anos = Math.floor(dias / 365);
+                const diasRestantes = dias % 365;
+                document.getElementById("tempo").innerHTML = `
+                    ${anos} ano${anos > 1 ? "s" : ""}, 
+                    ${diasRestantes} dia${diasRestantes > 1 ? "s" : ""}, 
+                    ${horas} hora${horas > 1 ? "s" : ""}, 
+                    ${minutos} minuto${minutos > 1 ? "s" : ""} e 
+                    ${segundos} segundo${segundos > 1 ? "s" : ""}
+                `;
+            } else {
+                document.getElementById("tempo").innerHTML = `
+                    ${dias} dia${dias > 1 ? "s" : ""}, 
+                    ${horas} hora${horas > 1 ? "s" : ""}, 
+                    ${minutos} minuto${minutos > 1 ? "s" : ""} e 
+                    ${segundos} segundo${segundos > 1 ? "s" : ""}
+                `;
+            }
+        }
+
+        // Atualiza o contador a cada segundo
+        setInterval(atualizarContador, 1000);
+
+        // Inicializa o contador imediatamente
+        atualizarContador();
+    </script>
+</body>
+</html>

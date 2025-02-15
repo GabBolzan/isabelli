@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linha do Tempo - Nossos Planos</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            padding-bottom: 50px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, blueviolet, #8a2be2, #4b0082);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            z-index: 0;
+            border-radius: 3px;
+        }
+
+        .event {
+            padding: 20px 40px;
+            position: relative;
+            width: 45%;
+            background-color: #444;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .event:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.7);
+        }
+
+        .event.left {
+            right: 5%;
+        }
+
+        .event.right {
+            left: 50%;
+        }
+
+        .event::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: blueviolet;
+            border: 4px solid #222;
+            border-radius: 50%;
+            top: 20px;
+            z-index: 1;
+        }
+
+        .event.left::after {
+            right: -12px;
+        }
+
+        .event.right::after {
+            left: -12px;
+        }
+
+        .event img {
+            max-width: 100%;
+            border-radius: 10px;
+            display: none;
+            margin-top: 10px;
+            transition: opacity 0.5s ease;
+        }
+
+        .event:hover img {
+            display: block;
+            opacity: 1;
+        }
+
+        .event h3 {
+            color: blueviolet;
+            margin-bottom: 10px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .event p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        /* Adicionando uma animação de entrada para os eventos */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .event {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Melhorando o botão de hover */
+        .event:hover::after {
+            background-color: #8a2be2;
+            border-color: #444;
+        }
+
+        /* Estilo do botão de voltar */
+        .back-button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: blueviolet;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: darkviolet;
+        }
+    </style>
+</head>
+<body>
+    <div class="timeline">
+        <!-- Evento 1 -->
+        <div class="event left">
+            <h3>Casamento</h3>
+            <p>Estou muito ansioso para o dia mais importante da minha vida. Não vejo a hora de casar com o amor da minha vida, com todos os detalhes pensados durante esse tempo.</p>
+            <img src="https://i.pinimg.com/736x/a9/66/23/a96623ca4183b3bb3c803711f3ff7019.jpg" alt="Casamento">
+        </div>
+
+        <!-- Evento 2 -->
+        <div class="event right">
+            <h3>Viagens</h3>
+            <p>Podemos considerar domingo a nossa primeira viagem? Espero muito que tenhamos muitas e muitas viagens juntos, quero ir pra todos os lugares possíveis com você (principalmente praias e alguns países da europa).</p>
+            <img src="https://i.pinimg.com/736x/8c/0f/48/8c0f48e0209e1a4075a26bff7106055b.jpg" alt="Viagem para a Europa">
+        </div>
+
+        <!-- Evento 3 -->
+        <div class="event left">
+            <h3>Morar Juntos</h3>
+            <p>Espero que a gente consiga morar juntos o quanto antes, não aguento mais ficar longe do meu amor, quero ter ver todos os dias, te beijar todos os dias, te dar bom dia, quero você o tempo todo, seja em curitiba, em brasília, não importa o lugar.</p>
+            <img src="https://i.pinimg.com/736x/72/81/05/728105076022b0df6dac6846bb9e0f2d.jpg" alt="Nossa Casa">
+        </div>
+
+        <!-- Evento 4 -->
+        <div class="event right">
+            <h3>Formatura</h3>
+            <p>Com certeza uma das coisas que mais está dificultando a nossa vida juntos é a faculdade, mas é uma coisa necessária e que será de grande importancia no nosso futuro e no da nossa família, aguardo ansiosamente pela nossa formatura.</p>
+            <img src="https://i.pinimg.com/736x/46/f8/34/46f83402f28b5493f6d4525941dc525e.jpg" alt="Nosso Pet">
+        </div>
+
+        <div class="event left">
+            <h3>Nossa Casa</h3>
+            <p>Quero realizar todos os seus sonhos, incluindo a sua casa perfeita, com todas as coisas que você quiser(até mesmo a sua casa maluca pra aposentadoria), vai ser incrivel criar a nossa família seguindo a forma que você pensa, você é muito incrivel, gosto muito que você pensa em cada detalhe</p>
+            <img src="https://i.pinimg.com/736x/f2/47/04/f24704f79a3567fc3414b3e1086176f9.jpg" alt="Nossa Casa">
+        </div>
+
+        <div class="event right">
+            <h3>Filhos</h3>
+            <p>Nunca achei que fosse querer tanto ser pai, você mudou muita coisa (pra melhor) em mim, e isso foi uma delas, quero muito ser pai dos seus filhos e ter uma família com você.</p>
+            <img src="https://i.pinimg.com/736x/ec/cb/e0/eccbe04bc371bd48836f0e7ee63c774e.jpg" alt="Nosso Pet">
+        </div>
+    </div>
+
+    <!-- Botão de voltar para a página inicial -->
+    <button class="back-button" onclick="window.location.href='index.html'">Voltar para a Página Inicial</button>
+</body>
+</html>
